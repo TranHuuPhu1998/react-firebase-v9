@@ -39,3 +39,4 @@
 
 Firebase 9 + React Tutorial For Beginners | #6 - Upload Files - Change Avatar => 39
 
+Firebase 9 + React Tutorial For Beginners | #9 - Home Page - Get Data

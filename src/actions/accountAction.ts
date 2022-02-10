@@ -57,3 +57,15 @@ export const reAuth = async (user: IAuth, pass: string) => {
     return toast.error(err.message)
   }
 }
+
+export const changePassword = async (user: IAuth, old_pass: string, new_pass: string) => {
+  try {
+    const res = await reAuth(user, old_pass)
+    if(res) return toast.error(res);
+
+    await updatePassword(user, new_pass)
+    return toast.success('Updated New Password.')
+  } catch (err: any) {
+    return toast.error(err.message)
+  }
+}

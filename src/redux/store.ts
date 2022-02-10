@@ -1,11 +1,13 @@
 import { configureStore } from '@reduxjs/toolkit'
 import authSlice from  './slice/authSlice'
+import collectionSlice from './slice/collectionSlice'
 import profileSlice from './slice/profileSlice'
 
 export const store = configureStore({
   reducer: {
     auth: authSlice,
-    profile: profileSlice
+    profile: profileSlice,
+    collections: collectionSlice
   },
   middleware: (getDefaultMiddleware) => getDefaultMiddleware({
     serializableCheck: false

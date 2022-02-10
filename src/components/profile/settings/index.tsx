@@ -1,5 +1,6 @@
 import React from "react";
 import Account from "./Account";
+import ChangePassword from "./ChangePassword";
 import Email from "./Email";
 import ProfileForm from "./ProfileForm";
 
@@ -15,7 +16,7 @@ const Settings: React.FC<IProps> = ({ setOnSetting }) => {
       {/* Account */}
       <Account />
       <Email />
-
+      <ChangePassword />
       <button
         className="px-4 py-2 mt-5 font-semibold tracking-wider text-white uppercase bg-gray-500 rounded-md hover:bg-gray-600"
         onClick={() => setOnSetting(false)}

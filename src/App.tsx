@@ -1,6 +1,7 @@
 import Header from "components/header";
 import { useEffect } from "react";
 import { Switch, Route, useHistory } from "react-router-dom";
+import { collectionFetchData } from "redux/slice/collectionSlice";
 
 import PageRender from "./PageRender";
 
@@ -41,7 +42,12 @@ const App = () => {
   }, [dispatch, history]);
 
   useEffect(() => {
-    if (currentUser?.uid) dispatch(fetchProfile(currentUser.uid));
+    if (!currentUser?.uid) return;
+    // Profile
+    dispatch(fetchProfile(currentUser.uid));
+    // Home
+    const payload = { uid: currentUser.uid };
+    dispatch(collectionFetchData(payload));
   }, [currentUser, dispatch]);
 
   return (

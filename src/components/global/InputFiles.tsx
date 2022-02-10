@@ -16,10 +16,10 @@ const InputFiles: React.FC<IProps> = ({ multiple, files, setFiles }) => {
     checkImages(file);
   };
 
-  const checkImages = (files: FileList) => {
+  const checkImages = (fls: FileList) => {
     let newFiles: File[] = [];
 
-    Array.from(files).map((file) => {
+    Array.from(fls).map((file) => {
       if (!file) return toast.error("File does not exist.");
 
       const types = ["image/png", "image/jpeg", "image/gif"];
@@ -32,7 +32,11 @@ const InputFiles: React.FC<IProps> = ({ multiple, files, setFiles }) => {
       newFiles.push(file);
       return null;
     });
-    setFiles(newFiles);
+    if (multiple) {
+      setFiles([...files, ...newFiles]);
+    } else {
+      setFiles(newFiles);
+    }
   };
   const showImage = (url: string, index: number) => {
     return (
@@ -64,6 +68,7 @@ const InputFiles: React.FC<IProps> = ({ multiple, files, setFiles }) => {
           setOpen={setModal}
           multiple={multiple}
           setFiles={setFiles}
+          files={files}
         />
       )}
       <div onDrop={drop} onDragOver={allowDrag}>
